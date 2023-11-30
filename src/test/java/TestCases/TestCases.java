@@ -1,5 +1,6 @@
 package TestCases;
 
+import Pages.RegisterPage;
 import Pages.SearchPage;
 import Pages.ShoppingBagPage;
 import org.openqa.selenium.WebDriver;
@@ -15,6 +16,7 @@ public class TestCases{
     public WebDriver driver;
     SearchPage searchPage;
     ShoppingBagPage shoppingBagPage;
+    RegisterPage registerPage;
     public static String url = "https://www.mumzworld.com/";
 
     @BeforeTest
@@ -52,7 +54,19 @@ public class TestCases{
         boolean increaseAssert = shoppingBagPage.isShoppingPage();
         Assert.assertTrue(increaseAssert);
         shoppingBagPage.increaseItemQty();
+    }
 
+    @Test(priority = 5)
+    public void registrationStopOneTest(){
+        registerPage = shoppingBagPage.proceed();
+        registerPage.registrationStepOne("User1","User",
+                "qa.engineer20236@gmail.com","MumzWord@1234");
+    }
+
+    @Test(priority = 6)
+    public void registrationStopTwoTest(){
+        registerPage.registrationStepTwo("City 2","St 1",
+                "32","52254585");
     }
     @AfterTest
     public void teardown(){
