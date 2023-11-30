@@ -33,7 +33,7 @@ public class ShoppingBagPage {
         wait.until(d -> driver.findElement(qty).isDisplayed());
         driver.findElement(qty).click();
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         }catch (Exception ex){
             ex.printStackTrace();
             System.out.println(ex.getMessage());
