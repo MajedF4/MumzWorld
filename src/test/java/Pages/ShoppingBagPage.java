@@ -38,7 +38,6 @@ public class ShoppingBagPage {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
-        System.out.println("++++++++++ "+driver.findElement(qty).getText());
     }
 
 
