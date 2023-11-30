@@ -15,6 +15,10 @@ public class ShoppingBagPage {
     By shoppingLading = By.className("cartPage-heading-3f_");
     By increaseField = By.xpath("(//input[@name='quantity'])[2]");
     By qty = By.xpath("//span[@class='cartItemsQty-rootWithoutVerticalPadding-cwC cartItemsQty-root-1IW']");
+   By proceedBtn = By.xpath("(//span[text()='Proceed to Checkout'])[2]");
+   By proceedPage = By.className("signIn-title-1Ds");
+   By signupLink = By.xpath("//span[text()='Sign up']");
+
     public ShoppingBagPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -38,6 +42,13 @@ public class ShoppingBagPage {
             ex.printStackTrace();
             System.out.println(ex.getMessage());
         }
+    }
+    public RegisterPage proceed(){
+        driver.findElement(proceedBtn).click();
+        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(d -> driver.findElement(proceedPage).isDisplayed());
+        driver.findElement(signupLink).click();
+        return new RegisterPage(driver);
     }
 
 
