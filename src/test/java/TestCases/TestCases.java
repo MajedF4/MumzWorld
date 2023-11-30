@@ -51,6 +51,7 @@ public class TestCases{
         shoppingBagPage = searchPage.goToViewBagPage();
         boolean increaseAssert = shoppingBagPage.isShoppingPage();
         Assert.assertTrue(increaseAssert);
+        shoppingBagPage.increaseItemQty();
 
     }
     @AfterTest
