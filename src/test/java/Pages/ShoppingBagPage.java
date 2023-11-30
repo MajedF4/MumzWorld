@@ -32,7 +32,7 @@ public class ShoppingBagPage {
     public void increaseItemQty(){
         WebElement increase = driver.findElement(increaseField);
         increase.clear();
-        increase.sendKeys("3", Keys.ENTER);
+        increase.sendKeys("5", Keys.ENTER);
         Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(d -> driver.findElement(qty).isDisplayed());
         driver.findElement(qty).click();
