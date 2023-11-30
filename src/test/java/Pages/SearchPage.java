@@ -34,7 +34,7 @@ public class SearchPage {
         return driver.findElement(ProductSearchAccual).getText();
     }
      public String addItemToBag(){
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.findElement(bagBtn).click();
         wait.until(d -> driver.findElement(addItemAssert).isDisplayed());
         return driver.findElement(addItemAssert).getText();
