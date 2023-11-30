@@ -44,7 +44,6 @@ public class TestCases{
         searchPage = new SearchPage(driver);
         String addItemAssert = searchPage.addItemToBag();
         Assert.assertEquals(addItemAssert,"Successfully added to bag");
-//        searchPage.goToViewBagPage();
     }
 
     @Test(priority = 4)
