@@ -36,5 +36,6 @@ public class RegisterPage {
         driver.findElement(pass).sendKeys(password);
         driver.findElement(termConditionBox).isSelected();
         driver.findElement(registerBtn).click();
+        wait.until(d -> driver.findElement(stepTwoLanding).isDisplayed());
     }
 }
