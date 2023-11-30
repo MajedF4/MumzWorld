@@ -32,6 +32,12 @@ public class ShoppingBagPage {
         Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(d -> driver.findElement(qty).isDisplayed());
         driver.findElement(qty).click();
+        try {
+            Thread.sleep(5000);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            System.out.println(ex.getMessage());
+        }
         System.out.println("++++++++++ "+driver.findElement(qty).getText());
     }
 
