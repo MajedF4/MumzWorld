@@ -3,10 +3,11 @@ package Utilires;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class Reusable {
-    WebDriver driver;
-    public void search(WebDriver driver, String searchKey, By locator){
-        driver.findElement(locator).sendKeys(searchKey, Keys.ENTER);
+    public void selectFun(WebDriver driver, By selector, By index){
+        driver.findElement(selector).click();
+        driver.findElement(index).click();
     }
 }
