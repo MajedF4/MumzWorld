@@ -60,7 +60,7 @@ public class TestCases{
     public void registrationStopOneTest(){
         registerPage = shoppingBagPage.proceed();
         registerPage.registrationStepOne("User1","User",
-                "qa.engineer20236@gmail.com","MumzWord@1234");
+                "qa.engineer20237@gmail.com","MumzWord@1234");
     }
 
     @Test(priority = 6)
