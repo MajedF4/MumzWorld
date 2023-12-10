@@ -1,6 +1,6 @@
 package Pages;
 
-import Utilires.Reusable;
+import Utilities.Reusable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Wait;
