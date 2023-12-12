@@ -16,4 +16,9 @@ public class Reusable {
         Wait wait = new WebDriverWait(wDriver, Duration.ofSeconds(duration));
         wait.until(d -> wDriver.findElement(elementLocator).isDisplayed());
     }
+    public void clearAndType(WebDriver driver, By elementLocator, String typeWord){
+        driver.findElement(elementLocator).clear();
+        driver.findElement(elementLocator).sendKeys(typeWord);
+
+    }
 }
