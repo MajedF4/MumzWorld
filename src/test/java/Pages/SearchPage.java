@@ -1,15 +1,13 @@
 package Pages;
 
+import Utilities.Reusable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 public class SearchPage {
     WebDriver driver;
+    Reusable reusable = new Reusable();
 
     public SearchPage(WebDriver driver){
         this.driver = driver;
@@ -26,23 +24,21 @@ public class SearchPage {
         driver.findElement(keyworldField).sendKeys(searchKey, Keys.ENTER);
     }
     public String clickOnProduct(){
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(d -> driver.findElement(searchedPRoduct).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,searchedPRoduct,10);
         driver.findElement(searchedPRoduct).click();
-        wait.until(d -> driver.findElement(ProductSearchAccual).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,ProductSearchAccual,10);
         return driver.findElement(ProductSearchAccual).getText();
     }
      public String addItemToBag(){
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.findElement(bagBtn).click();
-        wait.until(d -> driver.findElement(addItemAssert).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,addItemAssert,10);
         return driver.findElement(addItemAssert).getText();
 
      }
     public ShoppingBagPage goToViewBagPage(){
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(d -> driver.findElement(veiwBag).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,veiwBag,10);
         driver.findElement(veiwBag).click();
         return new ShoppingBagPage(driver);
     }
+
 }
