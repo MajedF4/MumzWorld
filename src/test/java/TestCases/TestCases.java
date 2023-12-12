@@ -29,14 +29,15 @@ public class TestCases{
     }
 
     @Test(priority = 1)
-    public void SearchOperation(){
+    public void searchOperationTest(){
         searchPage = new SearchPage(driver);
         searchPage.search("Aery");
     }
 
     @Test(priority = 2)
-    public void clickOnSearchedProduct(){
+    public void clickOnSearchedProductTest(){
         searchPage = new SearchPage(driver);
+        searchPage.search("Aery");
         String productAssert = searchPage.clickOnProduct();
         Assert.assertEquals(productAssert,"Aery - Indian Sandalwood Candle - Black");
     }
