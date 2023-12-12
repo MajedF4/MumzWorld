@@ -19,12 +19,12 @@ public class SearchPage {
     By bagBtn = By.xpath("//button[@title='Add to bag']");
     By addItemAssert = By.xpath("//span[text()='Successfully added to bag']");
     By veiwBag = By.xpath("//a[@href='/en/cart']");
-//    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
     public void search(String searchKey){
-        driver.findElement(keyworldField).sendKeys(searchKey, Keys.ENTER);
+        reusable.clearAndType(driver,keyworldField,searchKey);
+        driver.findElement(keyworldField).click();
     }
     public String clickOnProduct(){
-        reusable.isDisplayedWaitEvent(driver,searchedPRoduct,10);
+        reusable.isDisplayedWaitEvent(driver,searchedPRoduct,15);
         driver.findElement(searchedPRoduct).click();
         reusable.isDisplayedWaitEvent(driver,ProductSearchAccual,10);
         return driver.findElement(ProductSearchAccual).getText();
