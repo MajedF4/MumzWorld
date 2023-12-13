@@ -24,25 +24,26 @@ public class RegisterPage {
     By building = By.id("customer_street[1]");
     By phoneNumber = By.id("customer_telephone");
     By selectCountry = By.xpath("(//div[contains(@class,'searchSelect-input-D63 observableSelect-input-2nD')])[1]");
-    By saveAndContinue = By.className("addressForm-buttons-1-h");
+    By saveAndContinue = By.xpath("//span[text()='Save & Continue']");
     By selectedOp = By.xpath("//div[text()='United Kingdom']");
+    By getPhoneNumber = By.className("shippingInformation-cardPersonalTelephone-S9w");
     public RegisterPage(WebDriver driver) {
         this.driver = driver;
     }
 
     public void registrationStepOne(String fName, String lName, String email, String password){
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> driver.findElement(registerBtn).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,registerBtn,5);
         driver.findElement(firstName).sendKeys(fName);
         driver.findElement(lastName).sendKeys(lName);
         driver.findElement(emial).sendKeys(email);
         driver.findElement(pass).sendKeys(password);
         driver.findElement(termConditionBox).isSelected();
         driver.findElement(registerBtn).click();
-        wait.until(d -> driver.findElement(stepTwoLanding).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,stepTwoLanding,5);
     }
 
-    public void registrationStepTwo(String userCity, String userStreet, String userBuilding, String userPhone){
+    public String registrationStepTwo(String userCity, String userStreet, String userBuilding, String userPhone){
+        reusable.isDisplayedWaitEvent(driver,selectCountry,10);
         reusable.selectFun(driver,selectCountry, selectedOp);
         driver.findElement(city).sendKeys(userCity);
         driver.findElement(street).sendKeys(userStreet);
@@ -50,7 +51,10 @@ public class RegisterPage {
         driver.findElement(phoneNumber).sendKeys(userPhone);
         if (driver.findElement(saveAndContinue).isEnabled()) {
             driver.findElement(saveAndContinue).click();
+            reusable.isDisplayedWaitEvent(driver,getPhoneNumber,15);
         }
+
+        return driver.findElement(getPhoneNumber).getText();
     }
 
 }
