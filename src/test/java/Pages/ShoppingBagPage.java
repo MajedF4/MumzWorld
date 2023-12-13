@@ -1,17 +1,14 @@
 package Pages;
 
+import Utilities.Reusable;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Wait;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 
 public class ShoppingBagPage {
 
     WebDriver driver;
+    Reusable reusable = new Reusable();
     By shoppingLading = By.className("cartPage-heading-3f_");
     By increaseField = By.xpath("(//input[@name='quantity'])[2]");
     By qty = By.xpath("//span[@class='cartItemsQty-rootWithoutVerticalPadding-cwC cartItemsQty-root-1IW']");
@@ -24,17 +21,17 @@ public class ShoppingBagPage {
     }
 
     public boolean isShoppingPage(){
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> driver.findElement(shoppingLading).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,shoppingLading,5);
         return driver.findElement(shoppingLading).isDisplayed();
     }
 
     public void increaseItemQty(){
-        WebElement increase = driver.findElement(increaseField);
-        increase.clear();
-        increase.sendKeys("5", Keys.ENTER);
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> driver.findElement(qty).isDisplayed());
+//        WebElement increase = driver.findElement(increaseField);
+//        increase.clear();
+//        increase.sendKeys("5", Keys.ENTER);
+        reusable.clearAndType(driver,increaseField,"5");
+        driver.findElement(increaseField).click();
+        reusable.isDisplayedWaitEvent(driver,qty,5);
         driver.findElement(qty).click();
         try {
             Thread.sleep(2000);
@@ -45,8 +42,7 @@ public class ShoppingBagPage {
     }
     public RegisterPage proceed(){
         driver.findElement(proceedBtn).click();
-        Wait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(d -> driver.findElement(proceedPage).isDisplayed());
+        reusable.isDisplayedWaitEvent(driver,proceedPage,5);
         driver.findElement(signupLink).click();
         return new RegisterPage(driver);
     }
