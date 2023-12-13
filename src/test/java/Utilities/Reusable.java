@@ -21,4 +21,10 @@ public class Reusable {
         driver.findElement(elementLocator).sendKeys(typeWord);
 
     }
+    public double getPrice(WebDriver driver, By priceLocator, By priceDecimalLocator){
+        String price = driver.findElement(priceLocator).getText() +
+                '.'+driver.findElement(priceDecimalLocator).getText();
+        double totalPrice = Double.parseDouble(price);
+        return totalPrice;
+    }
 }
