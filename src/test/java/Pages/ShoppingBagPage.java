@@ -15,6 +15,8 @@ public class ShoppingBagPage {
    By proceedBtn = By.xpath("(//span[text()='Proceed to Checkout'])[2]");
    By proceedPage = By.className("signIn-title-1Ds");
    By signupLink = By.xpath("//span[text()='Sign up']");
+    By priceInteger = By.xpath("(//span[@class='price-integer-2Ym'])[2]");
+    By priceFraction = By.xpath("(//span[@class='price-fraction-2nk'])[2]");
 
     public ShoppingBagPage(WebDriver driver) {
         this.driver = driver;
@@ -26,15 +28,14 @@ public class ShoppingBagPage {
     }
 
     public void increaseItemQty(){
-//        WebElement increase = driver.findElement(increaseField);
-//        increase.clear();
-//        increase.sendKeys("5", Keys.ENTER);
+        System.out.println("********* Price is: "+reusable.getPrice(driver,priceInteger,priceFraction));
         reusable.clearAndType(driver,increaseField,"5");
         driver.findElement(increaseField).click();
         reusable.isDisplayedWaitEvent(driver,qty,5);
         driver.findElement(qty).click();
         try {
             Thread.sleep(2000);
+            System.out.println("********* Updated Price is: "+reusable.getPrice(driver,priceInteger,priceFraction));
         }catch (Exception ex){
             ex.printStackTrace();
             System.out.println(ex.getMessage());
