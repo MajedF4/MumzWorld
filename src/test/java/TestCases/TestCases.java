@@ -18,6 +18,10 @@ public class TestCases{
     ShoppingBagPage shoppingBagPage;
     RegisterPage registerPage;
     public static String url = "https://www.mumzworld.com/";
+    String firstName = "User1";
+    String lastName = "User";
+    String phoneNumber = "7400123456";
+
 
     @BeforeTest
     public void setup(){
@@ -41,7 +45,6 @@ public class TestCases{
         String productAssert = searchPage.clickOnProduct();
         Assert.assertEquals(productAssert,"Aery - Indian Sandalwood Candle - Black");
     }
-
     @Test(priority = 3)
     public void addItemToBagTest(){
         searchPage = new SearchPage(driver);
@@ -60,14 +63,15 @@ public class TestCases{
     @Test(priority = 5)
     public void registrationStopOneTest(){
         registerPage = shoppingBagPage.proceed();
-        registerPage.registrationStepOne("User1","User",
-                "qa.engineer20237@gmail.com","MumzWord@1234");
+        registerPage.registrationStepOne(firstName,lastName,
+                "qa.engineer202311@gmail.com","MumzWord@1234");
     }
 
     @Test(priority = 6)
     public void registrationStopTwoTest(){
-        registerPage.registrationStepTwo("City 2","St 1",
-                "32","52254585");
+       String actual = registerPage.registrationStepTwo("City 2","St 1",
+                "32",phoneNumber);
+       Assert.assertEquals(actual,"+44"+phoneNumber);
     }
     @AfterTest
     public void teardown(){
