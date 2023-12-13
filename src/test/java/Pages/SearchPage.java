@@ -20,6 +20,7 @@ public class SearchPage {
     By addItemAssert = By.xpath("//span[text()='Successfully added to bag']");
     By veiwBag = By.xpath("//a[@href='/en/cart']");
     public void search(String searchKey){
+        reusable.isDisplayedWaitEvent(driver,keyworldField,10);
         reusable.clearAndType(driver,keyworldField,searchKey);
         driver.findElement(keyworldField).click();
     }
